@@ -37,6 +37,7 @@ cmp.setup {
     { name = "buffer", keyword_length = 2 }, -- for buffer word completion
     { name = "omni" },
     { name = "emoji", insert = true }, -- emoji completion
+    { name = "vsnip" },
   },
   completion = {
     keyword_length = 1,

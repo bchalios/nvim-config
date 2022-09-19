@@ -191,6 +191,24 @@ if utils.executable("lua-language-server") then
   }
 end
 
+if utils.executable("rust-analyzer") then
+  lspconfig.rust_analyzer.setup {
+    on_attach = custom_attach,
+    settings = {
+      ["rust-analyzer"] = {
+        checkOnSave = {
+            command = "clippy",
+            allTargets = false,
+            extraArgs = {"--target-dir", "/tmp/rust-analyzer-check"},
+        },
+      },
+    },
+    capabilities = capabilities,
+  }
+else
+  vim.notify("rust-analyzer not found!", vim.log.levels.WARN, { title = "Nvim-config" })
+end
+
 -- Change diagnostic signs.
 fn.sign_define("DiagnosticSignError", { text = "✗", texthl = "DiagnosticSignError" })
 fn.sign_define("DiagnosticSignWarn", { text = "!", texthl = "DiagnosticSignWarn" })

@@ -88,10 +88,9 @@ M.catppuccin = function()
   vim.cmd([[colorscheme catppuccin]])
 end
 
---- Use a random colorscheme from the pre-defined list of colorschemes.
-M.rand_colorscheme = function()
-  local colorscheme = utils.rand_element(vim.tbl_keys(M.colorscheme2dir))
 
+--- Load a colorscheme from the pre-defined list of colorschemes.
+M.load_colorscheme = function(colorscheme)
   if not vim.tbl_contains(vim.tbl_keys(M), colorscheme) then
     local msg = "Invalid colorscheme: " .. colorscheme
     vim.notify(msg, vim.log.levels.ERROR, { title = "nvim-config" })
@@ -119,5 +118,12 @@ M.rand_colorscheme = function()
   end
 end
 
+--- Use a random colorscheme from the pre-defined list of colorschemes.
+M.rand_colorscheme = function()
+  local colorscheme = utils.rand_element(vim.tbl_keys(M.colorscheme2dir))
+  M.load_colorscheme(colorscheme)
+end
+
 -- Load a random colorscheme
-M.rand_colorscheme()
+-- M.rand_colorscheme()
+M.load_colorscheme("gruvbox_material")

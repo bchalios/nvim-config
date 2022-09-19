@@ -44,6 +44,9 @@ packer.startup {
     use { "hrsh7th/cmp-path", after = "nvim-cmp" }
     use { "hrsh7th/cmp-buffer", after = "nvim-cmp" }
     use { "hrsh7th/cmp-omni", after = "nvim-cmp" }
+    use { "hrsh7th/cmp-nvim-lsp-signature-help", after = "nvim-cmp" }
+    use { "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" }
+    use { "hrsh7th/cmp-vsnip", after = "nvim-cmp" }
     use { "quangnguyen30192/cmp-nvim-ultisnips", after = { "nvim-cmp", "ultisnips" } }
     if vim.g.is_mac then
       use { "hrsh7th/cmp-emoji", after = "nvim-cmp" }
@@ -360,6 +363,16 @@ packer.startup {
     use { "ii14/emmylua-nvim", ft = "lua" }
 
     use { "j-hui/fidget.nvim", after = "nvim-lspconfig", config = [[require('config.fidget-nvim')]] }
+
+    --- Mason package manager for LSP, DAP servers, linters and formatters.
+    use { "williamboman/mason.nvim", config = [[require('config.mason')]] }
+    use {
+      "williamboman/mason-lspconfig.nvim",
+      requires = { "williamboman/mason.nvim" }
+    }
+
+    -- vimspector graphical Debugger
+    use { "puremourning/vimspector" }
   end,
   config = {
     max_jobs = 16,
