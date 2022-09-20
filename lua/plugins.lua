@@ -373,6 +373,9 @@ packer.startup {
 
     -- vimspector graphical Debugger
     use { "puremourning/vimspector" }
+
+    -- Rust stuff
+    use { "simrat39/rust-tools.nvim", after = "nvim-lspconfig", config = [[require('config.rust-tools')]]}
   end,
   config = {
     max_jobs = 16,
