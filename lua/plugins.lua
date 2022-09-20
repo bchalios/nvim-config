@@ -110,7 +110,7 @@ packer.startup {
     use {
       "nvim-telescope/telescope.nvim",
       cmd = "Telescope",
-      requires = { { "nvim-lua/plenary.nvim" } },
+      requires = "nvim-lua/plenary.nvim",
     }
     -- search emoji and other symbols
     use { "nvim-telescope/telescope-symbols.nvim", after = "telescope.nvim" }
@@ -373,6 +373,7 @@ packer.startup {
 
     -- vimspector graphical Debugger
     use { "puremourning/vimspector" }
+    use { "mfussenegger/nvim-dap" }
 
     -- Rust stuff
     use { "simrat39/rust-tools.nvim", after = "nvim-lspconfig", config = [[require('config.rust-tools')]]}

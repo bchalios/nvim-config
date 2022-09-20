@@ -19,7 +19,7 @@ local custom_attach = function(client, bufnr)
   map("n", "K", vim.lsp.buf.hover)
   map("n", "<C-k>", vim.lsp.buf.signature_help)
   map("n", "<space>rn", vim.lsp.buf.rename, { desc = "varialbe rename" })
-  map("n", "gr", vim.lsp.buf.references, { desc = "show references" })
+  map("n", "gr", require('telescope.builtin').lsp_references, { desc = "show references" })
   map("n", "[d", vim.diagnostic.goto_prev, { desc = "previous diagnostic" })
   map("n", "]d", vim.diagnostic.goto_next, { desc = "next diagnostic" })
   map("n", "<space>q", function()
@@ -85,6 +85,10 @@ local custom_attach = function(client, bufnr)
     local msg = string.format("Language server %s started!", client.name)
     vim.notify(msg, vim.log.levels.DEBUG, { title = "Nvim-config" })
   end
+end
+
+LspCommonAttach = function(client, bufnr)
+  custom_attach(client, bufnr)
 end
 
 local capabilities = lsp.protocol.make_client_capabilities()
@@ -191,23 +195,23 @@ if utils.executable("lua-language-server") then
   }
 end
 
-if utils.executable("rust-analyzer") then
-  lspconfig.rust_analyzer.setup {
-    on_attach = custom_attach,
-    settings = {
-      ["rust-analyzer"] = {
-        checkOnSave = {
-            command = "clippy",
-            allTargets = false,
-            extraArgs = {"--target-dir", "/tmp/rust-analyzer-check"},
-        },
-      },
-    },
-    capabilities = capabilities,
-  }
-else
-  vim.notify("rust-analyzer not found!", vim.log.levels.WARN, { title = "Nvim-config" })
-end
+--if utils.executable("rust-analyzer") then
+--  lspconfig.rust_analyzer.setup {
+--    on_attach = custom_attach,
+--    settings = {
+--      ["rust-analyzer"] = {
+--        checkOnSave = {
+--            command = "clippy",
+--            allTargets = false,
+--            extraArgs = {"--target-dir", "/tmp/rust-analyzer-check"},
+--        },
+--      },
+--    },
+--    capabilities = capabilities,
+--  }
+--else
+--  vim.notify("rust-analyzer not found!", vim.log.levels.WARN, { title = "Nvim-config" })
+--end
 
 -- Change diagnostic signs.
 fn.sign_define("DiagnosticSignError", { text = "✗", texthl = "DiagnosticSignError" })

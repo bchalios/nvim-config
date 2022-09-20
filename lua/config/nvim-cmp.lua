@@ -38,6 +38,7 @@ cmp.setup {
     { name = "omni" },
     { name = "emoji", insert = true }, -- emoji completion
     { name = "vsnip" },
+    { name = "nvim_lua" },
   },
   completion = {
     keyword_length = 1,
