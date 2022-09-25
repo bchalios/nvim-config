@@ -32,6 +32,9 @@ rt.setup({
             allTargets = false,
             extraArgs = {"--target-dir", "/tmp/rust-analyzer-check"},
         },
+        cargo = {
+          allFeatures = true,
+        }
       },
     },
   },
