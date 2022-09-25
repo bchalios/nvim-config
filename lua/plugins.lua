@@ -393,6 +393,7 @@ packer.startup {
     }
 
     -- Rust stuff
+    use { "rust-lang/rust.vim" }
     use { "simrat39/rust-tools.nvim", after = "nvim-lspconfig", config = [[require('config.rust-tools')]]}
   end,
   config = {

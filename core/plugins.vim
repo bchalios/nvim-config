@@ -426,3 +426,6 @@ endfunction
 
 """"""""""""""""""""""""""""""vim-auto-save settings""""""""""""""""""""""""""""""
 let g:auto_save = 1  " enable AutoSave on Vim startup
+
+""""""""""""""""""""""""""""""rust""""""""""""""""""""""""""""""
+let g:rustfmt_autosave = 1 " enable formatting when saving a buffer
